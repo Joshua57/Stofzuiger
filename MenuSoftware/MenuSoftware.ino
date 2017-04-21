@@ -165,41 +165,7 @@ B01000,
 B10000,
 };
 
-void menuChangeEvent(MenuChangeEvent changed);
 
-void menuUseEvent(MenuUseEvent used);
-
-MenuBackend menu = MenuBackend(menuUseEvent,menuChangeEvent);
-   MenuItem P1 =  MenuItem(" START VACUUM ",1);
-      MenuItem P11 = MenuItem("* STOP VACUUM  *",3);
-  
-   MenuItem P2 = MenuItem("  SET ALARM   ",1);
-      MenuItem P21 = MenuItem("Sunday",2);
-      MenuItem P22 = MenuItem("Monday",2);
-      MenuItem P23 = MenuItem("Tuesday",2);
-      MenuItem P24 = MenuItem("Wednesday",2);
-      MenuItem P25 = MenuItem("Thursday",2);
-      MenuItem P26 = MenuItem("Friday",2);
-      MenuItem P27 = MenuItem("Saturday",2);
-
-   MenuItem P3 = MenuItem("  SHOW TIME  ",1);
-
-void menuSetup() // function class MenuBackend
-{
-   menu.getRoot().add(P1); // Set the root menu, which is the first option
-        P1.add (P11);
-   P1.addRight (P2); // Add to the right of START
-        P2.add (P21);P21.addRight (P22);
-        P2.add (P22);P22.addRight (P23);
-        P2.add (P23);P23.addRight (P24);
-        P2.add (P24);P24.addRight (P25);
-        P2.add (P25);P25.addRight (P26);
-        P2.add (P26);P26.addRight (P27);
-        P2.add (P27);P27.addRight (P21);
-
-   P2.addRight (P3); // Add tot the right of TIJDSCHEMA
-   P3.addRight (P1); //Close the loop START-TIJDSCHEMA-KLOK-
-}
 
 void menuUseEvent(MenuUseEvent used) 
 {
@@ -221,7 +187,7 @@ void menuUseEvent(MenuUseEvent used)
       Stopvacuum();
       menu.moveUp();
      }
-   if (used.item.getName() == "Sunday"){DAYNR = 1; SetAlarm();}     
+   if (used.item.getName() == "Monday"){DAYNR = 1; SetAlarm();}     
    if (used.item.getName() == "Monday"){DAYNR = 2;  SetAlarm();}
    if (used.item.getName() == "Tuesday"){DAYNR = 3;  SetAlarm();}
    if (used.item.getName() == "Wednesday"){DAYNR = 4; SetAlarm();}
